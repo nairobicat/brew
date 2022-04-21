@@ -160,13 +160,14 @@ module Kernel
     exit 1
   end
 
-  def odeprecated(method, replacement = nil, disable: false, disable_on: nil, caller: send(:caller))
-    replacement_message = if replacement
-      "Use #{replacement} instead."
-    else
-      "There is no replacement."
-    end
-
+  def odeprecated(method, replacement = nil,
+                   disable:                false,
+                   disable_on:             nil,
+                   disable_for_developers: true,
+                   caller:                 send(:caller))
+     replacement_message = if replacement
+       "Use #{replacement} instead."
+     else
     unless disable_on.nil?
       if disable_on > Time.now
         will_be_disabled_message = " and will be disabled on #{disable_on.strftime("%Y-%m-%d")}"

@@ -11,9 +11,7 @@ then
     --includes) echo "-isystem${HOMEBREW_SDKROOT}/usr/include/apr-1" ;;
     --apr-libtool) echo "glibtool" ;;
     *)
-      exec xcrun apr-1-config "$@"
+      exec /usr/bin/apr-1-config "$@"
       ;;
   esac
 else
-  exec /usr/bin/apr-1-config "$@"
-fi
